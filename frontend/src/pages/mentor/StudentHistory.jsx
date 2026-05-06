@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
 import { Search } from 'lucide-react';
 
 export default function StudentHistory() {
+  const [searchParams] = useSearchParams();
   const [students, setStudents] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [activeStudent, setActiveStudent] = useState(null);
@@ -15,9 +17,20 @@ export default function StudentHistory() {
     // Load student directory
     supabase.from('students').select('id, name, usn, branch_code, batch').order('name')
        .then(({data}) => {
-          if (data) setStudents(data);
+          if (data) {
+             setStudents(data);
+             // Auto-select from URL if available
+             const usnParam = searchParams.get('usn');
+             if (usnParam) {
+                const target = data.find(s => s.usn === usnParam);
+                if (target) {
+                   setActiveStudent(target);
+                   loadHistory(target.id);
+                }
+             }
+          }
        });
-  }, []);
+  }, [searchParams]);
 
   const loadHistory = (studentId) => {
     supabase.from('attendance')

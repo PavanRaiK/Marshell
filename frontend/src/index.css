@@ -2,52 +2,52 @@
 @config "../tailwind.config.js";
 
 :root {
-  /* Canvas & Surfaces */
-  --bg-void:            #07070B;   /* Outermost page background */
-  --bg-canvas:          #0B0B11;   /* Main app background */
-  --bg-surface:         #111118;   /* Default card background */
-  --bg-surface-raised:  #16161F;   /* Hover state, active nav item, modals */
-  --bg-surface-inset:   #0E0E14;   /* Input fields, inset wells */
+  /* Canvas & Surfaces - Deep Midnight/Neon Purple Base */
+  --bg-void:            #05020D;   /* Outermost page background */
+  --bg-canvas:          #080414;   /* Main app background */
+  --bg-surface:         #0F0826;   /* Default card background */
+  --bg-surface-raised:  #1A0D3D;   /* Hover state, active nav item, modals */
+  --bg-surface-inset:   #060210;   /* Input fields, inset wells */
 
-  /* Borders */
-  --border-subtle:      rgba(255, 255, 255, 0.06);   /* Default card borders */
-  --border-default:     rgba(255, 255, 255, 0.10);   /* Stronger dividers */
-  --border-strong:      rgba(255, 255, 255, 0.16);   /* Focus rings, active states */
+  /* Borders - Tinted with neon cyan */
+  --border-subtle:      rgba(0, 229, 255, 0.08);   /* Default card borders */
+  --border-default:     rgba(0, 229, 255, 0.18);   /* Stronger dividers */
+  --border-strong:      rgba(0, 229, 255, 0.35);   /* Focus rings, active states */
 
   /* Text */
-  --text-primary:       #F5F5F7;   /* Headings, main content */
-  --text-secondary:     #8A8A94;   /* Labels, secondary info */
-  --text-tertiary:      #52525B;   /* Placeholder, disabled, captions */
-  --text-inverse:       #0B0B11;   /* For buttons on light bg (rare) */
+  --text-primary:       #F0F5FF;   /* Headings, main content */
+  --text-secondary:     #A3A9C2;   /* Labels, secondary info */
+  --text-tertiary:      #6A6E8C;   /* Placeholder, disabled, captions */
+  --text-inverse:       #05020D;   /* For buttons on light bg */
 
-  /* Accent — the cosmic glow */
-  --accent-glow:        #6366F1;   /* Indigo — used for top radial gradient and focus */
-  --accent-glow-soft:   rgba(99, 102, 241, 0.15);
+  /* Accent — Electric Neon Cyan */
+  --accent-glow:        #00E5FF;   
+  --accent-glow-soft:   rgba(0, 229, 255, 0.25);
 
-  /* Semantic — Present / Success */
-  --success-fg:         #10B981;
-  --success-bg:         rgba(16, 185, 129, 0.12);
-  --success-border:     rgba(16, 185, 129, 0.25);
+  /* Semantic — Present / Success (Neon Green) */
+  --success-fg:         #00FF9D;
+  --success-bg:         rgba(0, 255, 157, 0.12);
+  --success-border:     rgba(0, 255, 157, 0.3);
 
-  /* Semantic — Absent / Danger */
-  --danger-fg:          #F43F5E;
-  --danger-bg:          rgba(244, 63, 94, 0.12);
-  --danger-border:      rgba(244, 63, 94, 0.25);
+  /* Semantic — Absent / Danger (Neon Pink) */
+  --danger-fg:          #FF0055;
+  --danger-bg:          rgba(255, 0, 85, 0.12);
+  --danger-border:      rgba(255, 0, 85, 0.3);
 
-  /* Semantic — Warning */
-  --warning-fg:         #F59E0B;
-  --warning-bg:         rgba(245, 158, 11, 0.12);
-  --warning-border:     rgba(245, 158, 11, 0.25);
+  /* Semantic — Warning (Neon Yellow) */
+  --warning-fg:         #FFD500;
+  --warning-bg:         rgba(255, 213, 0, 0.12);
+  --warning-border:     rgba(255, 213, 0, 0.3);
 
   /* Semantic — Info / Neutral highlight */
-  --info-fg:            #3B82F6;
-  --info-bg:            rgba(59, 130, 246, 0.12);
-  --info-border:        rgba(59, 130, 246, 0.25);
+  --info-fg:            #00E5FF;
+  --info-bg:            rgba(0, 229, 255, 0.12);
+  --info-border:        rgba(0, 229, 255, 0.3);
   
   /* Fonts */
-  --font-display: 'Satoshi', 'Inter', system-ui, sans-serif;   /* Headings, hero numbers */
-  --font-body:    'Inter', system-ui, sans-serif;              /* Everything else */
-  --font-mono:    'JetBrains Mono', 'SF Mono', monospace;      /* USNs, tabular numbers, code */
+  --font-display: 'Satoshi', 'Inter', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;           
+  --font-mono:    'JetBrains Mono', 'SF Mono', monospace;   
 
   /* Spacing */
   --space-1:   4px;
@@ -64,27 +64,28 @@
   --space-24:  96px;
 
   /* Border radius */
-  --radius-sm:    6px;      /* Badges, small pills */
-  --radius-md:    10px;     /* Buttons, inputs */
-  --radius-lg:    14px;     /* Nav items, small cards */
-  --radius-xl:    18px;     /* Default cards */
-  --radius-2xl:   24px;     /* Hero cards */
-  --radius-full:  9999px;   /* Status pills, avatars */
+  --radius-sm:    6px;      
+  --radius-md:    10px;     
+  --radius-lg:    14px;     
+  --radius-xl:    18px;     
+  --radius-2xl:   24px;     
+  --radius-full:  9999px;   
 
   /* Shadows, Glows & Effects */
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--border-subtle);
-  --shadow-raised: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--border-default);
-  --shadow-focus: 0 0 0 3px rgba(99, 102, 241, 0.25);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--border-subtle);
+  --shadow-raised: 0 8px 30px rgba(0, 229, 255, 0.1), 0 0 0 1px var(--border-default);
+  --shadow-focus: 0 0 15px rgba(0, 229, 255, 0.4), 0 0 0 2px var(--accent-glow);
 
   --glow-cosmic: radial-gradient(
-    ellipse 600px 300px at 50% -100px,
-    rgba(99, 102, 241, 0.18),
-    rgba(99, 102, 241, 0) 70%
+    circle at 50% 0%,
+    rgba(255, 0, 85, 0.15) 0%,     /* Neon pink core */
+    rgba(0, 229, 255, 0.12) 30%,   /* Cyan halo */
+    rgba(8, 4, 20, 0) 70%
   );
 
   --card-gradient: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.02) 0%,
+    rgba(0, 229, 255, 0.03) 0%,
     rgba(255, 255, 255, 0) 50%
   );
 }
@@ -100,6 +101,7 @@ body {
 
 .app-main {
   background-image: var(--glow-cosmic);
+  background-attachment: fixed;
   min-height: 100vh;
 }
 
@@ -110,26 +112,44 @@ body {
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-card);
   padding: var(--space-8);
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
 }
 
 /* Base button and input styling to ensure visual structure */
 .btn-primary {
-  background: var(--text-primary);
-  color: var(--text-inverse);
+  background: var(--accent-glow);
+  color: #000;
+  border-radius: var(--radius-md);
+  padding: 12px 20px;
+  font: 600 14px var(--font-body);
+  letter-spacing: -0.005em;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 15px var(--accent-glow-soft);
+}
+.btn-primary:hover:not(:disabled) { 
+  background: #33EEFF; 
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
+  transform: translateY(-2px);
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: rgba(0, 229, 255, 0.05);
+  color: var(--accent-glow);
+  border: 1px solid rgba(0, 229, 255, 0.2);
   border-radius: var(--radius-md);
   padding: 12px 20px;
   font: 500 14px var(--font-body);
-  letter-spacing: -0.005em;
-  transition: 0.2s all;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.btn-primary:hover { background: #E5E5E7; }
-
-.btn-secondary {
-  background: var(--bg-surface-raised);
-  color: var(--text-primary);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-md);
-  padding: 12px 20px;
-  transition: 0.2s all;
+.btn-secondary:hover { 
+  background: rgba(0, 229, 255, 0.15); 
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+  border-color: rgba(0, 229, 255, 0.4);
 }
-.btn-secondary:hover { background: var(--bg-surface); }
