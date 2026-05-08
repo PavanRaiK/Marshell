@@ -16,7 +16,7 @@ import MyAttendance from './pages/student/MyAttendance';
 import Upcoming from './pages/student/Upcoming';
 import StudentMaterials from './pages/student/StudentMaterials';
 
-import { UploadCSV } from './pages/Stubs';
+import UploadCSV from './pages/mentor/UploadCSV';
 
 function RootRedirect() {
   const [target, setTarget] = useState(null);

@@ -15,7 +15,7 @@ export const Dashboard = () => <BaseStub title="Dashboard Overview" />;
 export const MarkAttendance = () => <BaseStub title="Mark Attendance" />;
 export const StudentHistory = () => <BaseStub title="Student History" />;
 export const Materials = () => <BaseStub title="Class Materials" />;
-export const UploadCSV = () => <BaseStub title="Upload CSV Data" />;
+
 
 export const MyAttendance = () => <BaseStub title="My Attendance" />;
 export const Upcoming = () => <BaseStub title="Upcoming Sessions" />;
