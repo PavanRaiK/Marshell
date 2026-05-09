@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS public.users (
 -- Or simply add a constraint on sessions:
 ALTER TABLE IF EXISTS public.sessions
 ADD CONSTRAINT check_session_date_range 
-CHECK (date <= CURRENT_DATE AND date >= '2025-08-04');
+CHECK (date >= '2025-08-04');
 
 -- 4. ENABLE ROW LEVEL SECURITY (RLS)
 ALTER TABLE public.students ENABLE ROW LEVEL SECURITY;
@@ -145,19 +145,19 @@ CREATE POLICY "users_read_own" ON public.users FOR SELECT USING (
 CREATE OR REPLACE FUNCTION public.handle_new_student()
 RETURNS TRIGGER AS $$
 BEGIN
-    -- This assumes we are creating a stub in public.users. 
-    -- The actual auth.users creation should be handled via supabase UI / admin APIs
-    -- However, we can create the public.users record here conditionally.
+    -- Upsert into public.users so that re-importing students doesn't fail
+    -- with duplicate email errors. ON CONFLICT updates the existing record.
     INSERT INTO public.users (id, email, role, student_id, display_name)
-    -- We can only do this if auth id exists. Bypassing true auth id generation for demo mapping logic via backend is safer.
-    -- Alternatively, we generate a mock UUID since this is purely a demonstration of 'trigger logic'.
     VALUES (
         gen_random_uuid(), 
         NEW.usn || '@forge.local', 
         'student', 
         NEW.id, 
         NEW.name
-    );
+    )
+    ON CONFLICT (email) DO UPDATE
+        SET student_id   = EXCLUDED.student_id,
+            display_name = EXCLUDED.display_name;
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabase';
 import { Link } from 'react-router-dom';
 import { Calendar as CalendarIcon, Users, Activity, BarChart2, CheckCircle2, Clock } from 'lucide-react';
+import { formatDate } from '../../lib/utils';
 
 function StatTicker({ label, value, icon: Icon }) {
   return (
@@ -277,7 +278,7 @@ export default function Dashboard() {
       <div className="flex gap-6 overflow-x-auto no-scrollbar pb-2 pt-2 border-y border-border-subtle items-center min-h-[72px]">
          <StatTicker label="TOTAL SESSIONS" value={metrics.sessions} icon={CalendarIcon} />
          <StatTicker label="ACTIVE STUDENTS" value={metrics.active} icon={Users} />
-         <StatTicker label="LAST SESSION" value={metrics.lastDate} icon={Clock} />
+         <StatTicker label="LAST SESSION" value={metrics.lastDate !== '-' ? formatDate(metrics.lastDate) : '-'} icon={Clock} />
          <StatTicker label="SYSTEM STATUS" value={"ONLINE"} icon={Activity} />
       </div>
 
