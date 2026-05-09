@@ -13,7 +13,11 @@ async function main() {
   });
   
   if (mentorErr) console.log("Mentor login failed:", mentorErr.message);
-  else console.log("Mentor login SUCCESS");
+  else {
+    console.log("Mentor login SUCCESS");
+    const { data: students, error: studentsErr } = await supabase.from('students').select('usn, name').limit(5);
+    console.log("public.students (polled as mentor):", students, studentsErr?.message || '');
+  }
 
   console.log("Testing student login with 4SH24CS001...");
   const { data: studentData, error: studentErr } = await supabase.auth.signInWithPassword({
@@ -24,10 +28,10 @@ async function main() {
   if (studentErr) console.log("Student login failed:", studentErr.message);
   else console.log("Student login SUCCESS");
 
-  // Check if public.users is mapped properly
-  console.log("Querying public.users directly...");
-  const { data: users, error: usersErr } = await supabase.from('users').select('*');
-  console.log("public.users rows:", users, usersErr?.message || '');
+  // Check if students table has data
+  console.log("Querying public.students directly...");
+  const { data: students, error: studentsErr } = await supabase.from('students').select('usn, name').limit(5);
+  console.log("public.students (first 5):", students, studentsErr?.message || '');
 }
 
 main();

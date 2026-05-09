@@ -17,19 +17,14 @@ export default function Login() {
     setLoading(true);
     try {
       const emailObj = isStudent ? `${identifier.toLowerCase()}@forge.com` : identifier;
+      const passwordToUse = isStudent ? password.toUpperCase() : password;
       
       const { data, error } = await supabase.auth.signInWithPassword({
         email: emailObj,
-        password: password
+        password: passwordToUse
       });
 
       if (error) throw error;
-
-      if (isStudent && password === identifier.toUpperCase()) {
-        setNeedsPasswordChange(true);
-        setLoading(false);
-        return;
-      }
 
       // Explicitly navigate to the root interceptor which will read the role and route correctly
       navigate('/');
@@ -62,7 +57,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex h-screen w-full items-center justify-center p-6 bg-void app-main">
+    <div className="flex h-screen w-full items-center justify-center p-6 bg-void app-main text-white">
       <div className="card w-full max-w-[440px] px-8 py-12 relative z-10 flex flex-col items-center">
         
         <div className="w-12 h-12 rounded-xl bg-accent-glow flex items-center justify-center shadow-focus mb-6">
@@ -98,7 +93,7 @@ export default function Login() {
           <>
             <div className="flex w-full mb-8 p-1 bg-surface-inset rounded-lg ring-1 ring-border-default">
               <button 
-                onClick={() => { setIsStudent(true); setErrorStatus(''); }}
+                onClick={() => { setIsStudent(true); setErrorStatus(''); setIdentifier(''); setPassword(''); }}
                 className={`flex-1 py-1.5 text-body-sm rounded-md transition-colors ${
                   isStudent ? 'bg-surface-raised text-fg-primary' : 'text-fg-tertiary hover:text-fg-secondary'
                 }`}
@@ -106,7 +101,7 @@ export default function Login() {
                 Student
               </button>
               <button 
-                onClick={() => { setIsStudent(false); setErrorStatus(''); }}
+                onClick={() => { setIsStudent(false); setErrorStatus(''); setIdentifier(''); setPassword(''); }}
                 className={`flex-1 py-1.5 text-body-sm rounded-md transition-colors ${
                   !isStudent ? 'bg-surface-raised text-fg-primary' : 'text-fg-tertiary hover:text-fg-secondary'
                 }`}
@@ -124,7 +119,7 @@ export default function Login() {
                   type={isStudent ? 'text' : 'email'} 
                   value={identifier}
                   onChange={e => setIdentifier(e.target.value)}
-                  className="input w-full font-mono"
+                  className="input w-full font-mono uppercase"
                   placeholder={isStudent ? '4SH...' : 'mentor@forge.com'}
                 />
               </div>
@@ -135,10 +130,16 @@ export default function Login() {
                   type="password" 
                   value={password}
                   onChange={e => setPassword(e.target.value)}
-                  className="input w-full"
-                  placeholder="••••••••"
+                  className="input w-full font-mono uppercase"
+                  placeholder={isStudent ? 'ENTER USN AS PASSWORD' : '••••••••'}
                 />
               </div>
+
+              {isStudent && (
+                <p className="text-[11px] text-fg-tertiary text-center -mt-4">
+                  Students: Enter your USN in both fields to login.
+                </p>
+              )}
 
               {errorStatus && <p className="text-caption text-danger-fg text-center">{errorStatus}</p>}
 
